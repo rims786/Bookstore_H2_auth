@@ -26,23 +26,30 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 class BookControllerTest {
 
+    // Logger instance for logging information and errors
     private static final Logger logger = LoggerFactory.getLogger(BookControllerTest.class);
 
+    // MockMvc instance for simulating HTTP requests
     @Autowired
     private MockMvc mockMvc;
 
+    // Service instance for handling book-related business logic
     @Autowired
     private BookService bookService;
 
+    // Repository instance for accessing book data
     @Autowired
     private BookRepository bookRepository;
 
+    // ObjectMapper instance for serializing/deserializing JSON data
+    @Autowired
+    private BookController bookController;
+
+    // ObjectMapper instance for converting objects to JSON
     @Autowired
     private ObjectMapper objectMapper;
-    /**
-     * Test book object to be used in the tests.
-     * This book is created in the setUp method.
-     */
+
+    // Test book instance used in multiple tests
     private Book testBook;
 
     /**
@@ -58,6 +65,7 @@ class BookControllerTest {
         Book book = new Book();
         book.setTitle("Test Book");
         book.setAuthor("Test Author");
+        // Save the book to the repository
         testBook = bookService.addBook(book);
 
     }

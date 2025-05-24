@@ -1,7 +1,4 @@
---INSERT INTO BOOK (title, author, price) VALUES ('Java in Action', 'John Smith', 49.99);
---INSERT INTO BOOK (title, author, price) VALUES ('Spring Boot Deep Dive', 'Jane Doe', 59.99);
---INSERT INTO BOOK (title, author, price) VALUES ('Java in Action2', 'JJohn Smith', 39.99);
---INSERT INTO BOOK (title, author, price) VALUES ('Spring Boot Deep Dive2', 'JJane Doe', 69.99);
+-- SQL script to insert sample data into the books table
 INSERT INTO books (title, author, price) VALUES
 ('The Great Gatsby', 'F. Scott Fitzgerald', 19.99),
 ('To Kill a Mockingbird', 'Harper Lee', 15.99),

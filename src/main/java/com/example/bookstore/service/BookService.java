@@ -17,8 +17,10 @@ import java.util.List;
 @Service
 public class BookService {
 
+    // Logger instance for logging information and errors
     private static final Logger logger = LoggerFactory.getLogger(BookService.class);
 
+    // Repository instance for accessing book data
     private final BookRepository bookRepo;
 
     /**
@@ -81,6 +83,7 @@ public class BookService {
             logger.warn("Book not found with ID: {}", id);
             throw new BookNotFoundException(id);
         }
+        // Set the ID of the book to ensure it updates the correct record
         book.setId(id);
         logger.info("Updating book with ID: {}", id);
         return bookRepo.save(book);
@@ -94,11 +97,15 @@ public class BookService {
      * @throws BookNotFoundException If the book is not found.
      */
     public void deleteBook(Long id) {
+        // Check if the book exists before attempting to delete
         if (!bookRepo.existsById(id)) {
             logger.warn("Book not found with ID: {}", id);
             throw new BookNotFoundException(id);
         }
+        // Perform the deletion
         bookRepo.deleteById(id);
         logger.info("Book with ID {} deleted", id);
+
     }
+
 }

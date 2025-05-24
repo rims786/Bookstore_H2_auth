@@ -9,4 +9,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * This interface extends JpaRepository to provide CRUD operations.
  */
 public interface BookRepository extends JpaRepository<Book, Long> {
+
+    // No additional methods defined in this interface
+    // JpaRepository provide common database access functionality
+
 }

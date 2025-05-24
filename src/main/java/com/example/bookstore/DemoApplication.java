@@ -15,7 +15,9 @@ public class DemoApplication {
 	 * @param args Command-line arguments passed to the application.
 	 */
 	public static void main(String[] args) {
+		// Start the Spring Boot application
 		SpringApplication.run(DemoApplication.class, args);
+
 	}
 
 }

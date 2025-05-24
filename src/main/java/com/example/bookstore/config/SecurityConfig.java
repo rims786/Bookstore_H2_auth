@@ -22,7 +22,9 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+    // Constants for API paths and roles
     private static final String BOOKS_API_PATH = "/books/**";
+    // Constants for user roles
     private static final String ROLE_ADMIN = "ADMIN";
 
     /** * Configures the security filter chain for the application.
@@ -50,6 +52,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.DELETE, BOOKS_API_PATH).hasRole(ROLE_ADMIN)
                         .anyRequest().authenticated()
                 )
+                // Enable HTTP Basic authentication
                 .httpBasic(basic -> {})
                 .build();
     }
@@ -69,18 +72,19 @@ public class SecurityConfig {
      */
     @Bean
     public UserDetailsService userDetailsService() {
+        // Create a user with the USER role
         UserDetails user = User.builder()
                 .username("user")
                 .password(passwordEncoder().encode("user123")) // Change this to a more secure password
                 .roles("USER")
                 .build();
-
+        // Create an admin user with the ADMIN role
         UserDetails admin = User.builder()
                 .username("admin")
                 .password(passwordEncoder().encode("admin123")) // Change this to a more secure password
                 .roles(ROLE_ADMIN)
                 .build();
-
+        // Create an in-memory user details manager with the defined users
         return new InMemoryUserDetailsManager(user, admin);
 
     }

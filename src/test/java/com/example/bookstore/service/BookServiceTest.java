@@ -16,7 +16,11 @@ import static org.junit.jupiter.api.Assertions.*;
  * This class tests the validation logic of the Book model.
  */
 class BookServiceTest {
+
+    // Logger instance for logging information and errors
     private static final Logger logger = LoggerFactory.getLogger(BookServiceTest.class);
+
+    // Validator instance for validating Book objects
     private static Validator validator;
 
     /**
@@ -24,9 +28,12 @@ class BookServiceTest {
      */
     @BeforeAll
     static void setUp() {
+        // Create a ValidatorFactory and get a Validator instance
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        // Initialize the validator
         validator = factory.getValidator();
         logger.info("Validator initialized");
+
     }
 
     /**
@@ -40,6 +47,7 @@ class BookServiceTest {
         assertTrue(violations.isEmpty());
         assertEquals(0, violations.size());
         logger.info("Book validation passed: {}", book);
+
     }
 
     /**
@@ -69,6 +77,7 @@ class BookServiceTest {
         assertEquals(1, violations.size());
         assertEquals("Author is mandatory", violations.iterator().next().getMessage());
         logger.info("Book validation failed: {}", book);
+
     }
 
     /**
@@ -83,5 +92,7 @@ class BookServiceTest {
         assertEquals(1, violations.size());
         assertEquals("Price must be non-negative", violations.iterator().next().getMessage());
         logger.info("Book validation failed: {}", book);
+
     }
+
 }
